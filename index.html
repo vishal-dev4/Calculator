@@ -1,0 +1,140 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         h1{
+            text-align: center;
+            color: rgb(25, 215, 25);
+         }
+         #cal{
+            height: 450px;
+            width: 400px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin: auto;
+            padding-top: 10px;
+            padding-bottom: 20px;
+         }
+        #inner{
+            width: 83%;
+            margin: auto;
+            margin-top: 30px;
+        }
+        #display{
+            height: 15%;
+            width: 98%;
+            padding: 1px 4px 5px 0;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            border-radius: 6px;
+        }
+        h4{
+            font-size: 20px;
+            text-align: end;
+        }
+        .row{
+            width: 98%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px 10px;
+            margin: auto;
+            margin-top: 7px;
+        }
+        .row>button{
+            border-radius: 6px;
+            font-size: 22px;
+            border: 0;
+            padding: 20px 0;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        }
+        .row>button:nth-child(4){
+            background-color: black;
+            color: white;
+        }
+        .row>button:nth-child(8){
+            background-color: black;
+            color: white;
+        }
+        .row>button:nth-child(12){
+            background-color: black;
+            color: white;
+        }
+        .row>button:nth-child(15){
+            background-color: black;
+            color: white;
+        }
+        .row>button:nth-child(16){
+            background-color: black;
+            color: white;
+        }
+        .row>button:nth-child(13){
+            background-color: red;
+            color: white;
+        }
+        #clear{
+            background-color: red;
+            color: white;
+        }
+        .fun{
+            background-color: black;
+            color: white;
+        }
+        #inner>#display{
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+        <div id="cal">
+            <div id="inner">
+              <div id="display">
+                <h4>0</h4>
+              </div>
+              <div class="row">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>+</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>-</button>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>*</button>
+                <button>C</button>
+                <button>0</button>
+                <button>=</button>
+                <button>/</button>
+              </div>
+            </div>
+        </div>
+</body>
+</html>
+<script>
+    let display = document.querySelector("h4");
+    let buttons = document.querySelectorAll("button");
+     let displayValue = "";
+    for(let i=0;i<buttons.length;i++){
+        buttons[i].addEventListener("click",(calculate)=>{
+            buttonText = calculate.target.innerText;
+            console.log("Button text is",buttonText);
+        
+            if(buttonText == "="){
+              display.innerText = eval(displayValue);
+              displayValue = eval(displayValue);
+            }
+            else if(buttonText == "C"){
+                displayValue = "";
+                display.innerText = displayValue;
+            } 
+            else{
+                displayValue += buttonText;
+                display.innerText = displayValue;
+            }
+        })
+    }
+</script>
